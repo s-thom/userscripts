@@ -5,9 +5,10 @@
 // @description  Uses a query parameter to determine whether searches should open the chat tab or not
 // @author       Stuart Thomson <https://github.com/s-thom>
 // @homepage     https://github.com/s-thom/userscripts
-// @source       https://github.com/s-thom/userscripts/blob/main/scripts/bing-chat-switcher.js
-// @updateURL    https://raw.githubusercontent.com/s-thom/userscripts/main/scripts/bing-chat-switcher.js
-// @downloadURL  https://raw.githubusercontent.com/s-thom/userscripts/main/scripts/bing-chat-switcher.js
+// @homepageURL  https://github.com/s-thom/userscripts
+// @source       https://github.com/s-thom/userscripts/blob/main/scripts/bing-chat-switcher.user.js
+// @updateURL    https://raw.githubusercontent.com/s-thom/userscripts/main/scripts/bing-chat-switcher.user.js
+// @downloadURL  https://raw.githubusercontent.com/s-thom/userscripts/main/scripts/bing-chat-switcher.user.js
 // @match        https://www.bing.com/search*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=bing.com
 // @grant        none
