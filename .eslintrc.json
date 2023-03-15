@@ -3,5 +3,6 @@
   "rules": {
     "prettier/prettier": "warn"
   },
+  "env": { "greasemonkey": true },
   "parserOptions": { "ecmaVersion": "latest" }
 }
