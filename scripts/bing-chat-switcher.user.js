@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bing Chat switcher
 // @namespace    http://tampermonkey.net/
-// @version      0.1.1
+// @version      0.1.3
 // @description  Uses a query parameter to determine whether searches should open the chat tab or not
 // @author       Stuart Thomson <https://github.com/s-thom>
 // @homepage     https://github.com/s-thom/userscripts

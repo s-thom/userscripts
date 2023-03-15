@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bing Yeeter
 // @namespace    http://tampermonkey.net/
-// @version      0.1.2
+// @version      0.1.4
 // @description  Closes automatically opened Bing tabs unless they were focused
 // @author       Stuart Thomson <https://github.com/s-thom>
 // @homepage     https://github.com/s-thom/userscripts

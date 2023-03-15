@@ -1,12 +1,11 @@
 // ==UserScript==
 // @name         Open searches in Bing too
 // @namespace    http://tampermonkey.net/
-// @version      0.1.3
+// @version      0.1.2
 // @description  Opens Google searches in Bing, but in the background
 // @author       Stuart Thomson <https://github.com/s-thom>
 // @homepage     https://github.com/s-thom/userscripts
-// @homepageURL  https://github.com/s-thom/userscripts
-// @source       https://github.com/s-thom/userscripts/blob/main/scripts/open-searches-in-bing-too.user.js
+// @source       https://github.com/s-thom/userscripts/blob/main/scripts/open-searches-in-bing-too.js
 // @updateURL    https://raw.githubusercontent.com/s-thom/userscripts/main/scripts/open-searches-in-bing-too.user.js
 // @downloadURL  https://raw.githubusercontent.com/s-thom/userscripts/main/scripts/open-searches-in-bing-too.user.js
 // @match        https://www.google.com/search*
@@ -14,15 +13,5 @@
 // @grant        GM_openInTab
 // ==/UserScript==
 
-(function () {
-  "use strict";
-
-  const q = new URLSearchParams(window.location.search).get("q");
-  if (!q) {
-    return;
-  }
-
-  const newQuery = new URLSearchParams({ q, s_frs: true });
-
-  GM_openInTab(`https://www.bing.com/search?${newQuery.toString()}`);
-})();
+// This script has been renamed.
+// You will need to update again.

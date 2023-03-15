@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GitHub Font Changer
 // @namespace    http://tampermonkey.net/
-// @version      0.1.1
+// @version      0.1.3
 // @description  Change the font used in code blocks on GitHub
 // @author       Stuart Thomson <https://github.com/s-thom>
 // @homepage     https://github.com/s-thom/userscripts
