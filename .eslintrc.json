@@ -1,0 +1,7 @@
+{
+  "extends": ["plugin:prettier/recommended", "plugin:userscripts/recommended"],
+  "rules": {
+    "prettier/prettier": "warn"
+  },
+  "parserOptions": { "ecmaVersion": "latest" }
+}
