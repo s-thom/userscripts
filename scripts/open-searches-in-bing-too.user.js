@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Open searches in Bing too
 // @namespace    http://tampermonkey.net/
-// @version      0.1.3
+// @version      0.2.0
 // @description  Opens Google searches in Bing, but in the background
 // @author       Stuart Thomson <https://github.com/s-thom>
 // @homepage     https://github.com/s-thom/userscripts
@@ -17,12 +17,31 @@
 (function () {
   "use strict";
 
+  const FLAGS = [
+    { name: "s_frs", weight: 0.5 },
+    { name: "s_exs", weight: 0.5 },
+  ];
+
+  function weightedRandomValue(arr) {
+    let totalWeight = arr.reduce((acc, item) => acc + item.weight, 0);
+    let rand = Math.random() * totalWeight;
+
+    for (let i = 0; i < arr.length; i++) {
+      let item = arr[i];
+      if (rand < item.weight) {
+        return item;
+      }
+      rand -= item.weight;
+    }
+  }
+
   const q = new URLSearchParams(window.location.search).get("q");
   if (!q) {
     return;
   }
 
-  const newQuery = new URLSearchParams({ q, s_frs: true });
+  const flag = weightedRandomValue(FLAGS).name;
+  const newQuery = new URLSearchParams({ q, [flag]: true });
 
   GM_openInTab(`https://www.bing.com/search?${newQuery.toString()}`);
 })();
