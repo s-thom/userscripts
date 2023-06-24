@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bing search expander
 // @namespace    http://tampermonkey.net/
-// @version      0.2.0
+// @version      0.3.0
 // @description  Turns one search into many through the power of GPT
 // @author       Stuart Thomson <https://github.com/s-thom>
 // @homepage     https://github.com/s-thom/userscripts
@@ -13,6 +13,7 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=bing.com
 // @grant        GM_getValue
 // @grant        GM_setValue
+// @grant        GM_deleteValue
 // @grant        GM_xmlhttpRequest
 // @grant        GM_openInTab
 // @grant        window.close
@@ -23,6 +24,7 @@
   "use strict";
 
   const API_KEY_STORAGE_KEY = "OpenAiApiKey";
+  const LOCK_STORAGE_KEY = "ThereCanBeOnlyOne";
   const CHATGPT_API_URL = "https://api.openai.com/v1/chat/completions";
   const CHATGPT_MODEL = "gpt-3.5-turbo";
   const CHATGPT_SYSTEM_PROMPT =
@@ -130,22 +132,49 @@
     GM_openInTab(`https://www.bing.com/search?${queryParams.toString()}`);
   }
 
-  async function run() {
-    const response = await gpt(q);
-    const newQueries = responseToPrompts(response);
+  /**
+   * @template T
+   * @param {() => T} callback
+   * @returns {T | undefined}
+   */
+  function withLock(callback, key) {
+    const value = Math.random();
+    const currentLock = GM_getValue(key);
 
-    const numTabsToOpen = Math.min(newQueries.length, getRandomNumTabs());
-
-    for (let i = 0; i < numTabsToOpen; i++) {
-      const newQuery = newQueries[i];
-
-      searchBing(newQuery);
-
-      await delay(getRandomDelay());
+    if (currentLock !== undefined) {
+      return;
     }
 
-    window.close();
+    try {
+      GM_setValue(key, value);
+
+      return callback();
+    } finally {
+      GM_deleteValue(key);
+    }
   }
 
-  run();
+  try {
+    await withLock(async function () {
+      const response = await gpt(q);
+      const newQueries = responseToPrompts(response);
+
+      const numTabsToOpen = Math.min(newQueries.length, getRandomNumTabs());
+
+      for (let i = 0; i < numTabsToOpen; i++) {
+        const newQuery = newQueries[i];
+
+        searchBing(newQuery);
+
+        await delay(getRandomDelay());
+      }
+    }, LOCK_STORAGE_KEY);
+  } catch (err) {
+    console.error("[bse]", err);
+
+    // An extra delay before killing the tab
+    await delay(getRandomDelay());
+  } finally {
+    window.close();
+  }
 })();
