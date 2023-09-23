@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         No more Fandom
 // @namespace    http://tampermonkey.net/
-// @version      0.0.1
-// @description  Fandom wikis suck, redirect to Breezewiki for your viewing pleasure
+// @version      0.1.0
+// @description  Fandom wikis suck, redirect to Antifandom for your viewing pleasure
 // @author       Stuart Thomson <https://github.com/s-thom>
 // @homepage     https://github.com/s-thom/userscripts
 // @homepageURL  https://github.com/s-thom/userscripts
@@ -21,6 +21,6 @@
   const [, subdomain] = location.hostname.match(/([^.]+)\.fandom\.com/);
   const [, page] = location.pathname.match(/\/wiki\/(.*)/);
 
-  GM_openInTab(`https://breezewiki.com/${subdomain}/wiki/${page}`);
+  GM_openInTab(`https://antifandom.com/${subdomain}/wiki/${page}`);
   window.close();
 })();
