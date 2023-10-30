@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/s-thom/userscripts#readme",
   "devDependencies": {
-    "@types/tampermonkey": "^4.20.4",
+    "@types/tampermonkey": "^5.0.0",
     "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
