@@ -17,12 +17,12 @@
   },
   "homepage": "https://github.com/s-thom/userscripts#readme",
   "devDependencies": {
-    "@types/tampermonkey": "^5.0.0",
+    "@types/tampermonkey": "^5.0.2",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-userscripts": "^0.4.0",
-    "prettier": "^3.0.3",
+    "prettier": "^3.1.0",
     "typescript": "^5.2.2"
   }
 }
