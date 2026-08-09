@@ -4,7 +4,8 @@
   "description": "A small collection of userscripts that I use",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint ."
   },
   "repository": {
     "type": "git",
